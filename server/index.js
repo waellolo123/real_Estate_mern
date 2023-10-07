@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import userRoute from './routes/userRoute.js'
-import authRoute from './routes/authRoute.js'
+import cors from 'cors';
+import userRoute from './routes/userRoute.js';
+import authRoute from './routes/authRoute.js';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ mongoose
 const app = express();
 // middelwares
 app.use(express.json());
+app.use(cors());
 // connecting to server
 app.listen(8000, () => {
   console.log('connected to server');
