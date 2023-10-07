@@ -22,13 +22,21 @@ const app = express();
 app.use(express.json());
 // connecting to server
 app.listen(8000, () => {
-  console.log('server is running on port 8000');
+  console.log('connected to server');
 })
 
 app.use('/api/users', userRoute);
 app.use('/api/auth', authRoute);
 
-
+app.use((err, req, res, next)=>{
+  const statusCode = err.statusCode || 500;
+  const message = err.message || 'internal server error';
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  })
+});
 
 
 
