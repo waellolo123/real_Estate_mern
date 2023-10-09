@@ -18,7 +18,7 @@ export default function Signin() {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:8000/api/auth/signup',{
+      const res = await fetch('http://localhost:8000/api/auth/signin',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export default function Signin() {
       }
       setLoading(false);
       setError(null);
-      navigate("/signin");
+      navigate("/");
     } catch (error) { 
       setLoading(false);
       setError(error.message);
@@ -47,9 +47,6 @@ export default function Signin() {
       <form 
       onSubmit={handleSubmit}
       className="flex flex-col gap-4" >
-        <input type="text" placeholder="Username" onChange={handleChange}
-        className="border p-3 rounded-lg" id="username"
-        />
         <input type="text" placeholder="Email" onChange={handleChange}
         className="border p-3 rounded-lg" id="email"
         />
@@ -63,8 +60,8 @@ export default function Signin() {
         </button>
       </form>
       <div className="flex gap-2 mt-3">
-        <p>dont have an account?</p>
-        <Link to={"/signin"}>
+        <p>Dont have an account?</p>
+        <Link to={"/signup"}>
           <span className='text-blue-700'>Sign Up</span>
         </Link>
       </div>

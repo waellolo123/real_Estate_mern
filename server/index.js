@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import userRoute from './routes/userRoute.js';
 import authRoute from './routes/authRoute.js';
 
@@ -22,6 +23,7 @@ const app = express();
 // middelwares
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 // connecting to server
 app.listen(8000, () => {
   console.log('connected to server');
